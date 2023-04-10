@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import dash
 from dash import *
 import plotly.graph_objects as go
@@ -170,7 +164,8 @@ def on_message(ws, msg):
                             q = abs(strategy_d[i-10]['pos']) 
                             if q != 0: 
                                 send_order('BUY', i-10, price, 1, 'end', q)
-                        if strategy_d[i-10]['pos'] == 0 and strategy_d[i-10]['status'] == 'start' and                         strategy_d[i-10]['side'] == 'SELL': # start 체결이 안되었을 시에는 취소
+                        if strategy_d[i-10]['pos'] == 0 and strategy_d[i-10]['status'] == 'start' and \
+                        strategy_d[i-10]['side'] == 'SELL': # start 체결이 안되었을 시에는 취소
                             c = client.futures_cancel_order(symbol = my_symbol, orderId = strategy_d[i-10]['order_id'],
                                                            timestamp = int(time.time())*1000)
                             print(c)
@@ -186,7 +181,8 @@ def on_message(ws, msg):
                             q = abs(strategy_d[i-10]['pos']) 
                             if q != 0: 
                                 send_order('SELL', i-10, price, -1, 'end', q)
-                        if strategy_d[i-10]['pos'] == 0 and strategy_d[i-10]['status'] == 'start' and                         strategy_d[i-10]['side'] == 'BUY': # start 체결이 안되었을 시에는 취소
+                        if strategy_d[i-10]['pos'] == 0 and strategy_d[i-10]['status'] == 'start' and \
+                        strategy_d[i-10]['side'] == 'BUY': # start 체결이 안되었을 시에는 취소
                             c = client.futures_cancel_order(symbol = my_symbol, orderId = strategy_d[i-10]['order_id'],
                                                            timestamp = int(time.time())*1000)
                             print(c)
@@ -216,10 +212,13 @@ def on_message(ws, msg):
                                  
     except Exception as e:
         logger.exception(e)
+    if count > 10:
+        ws.close()
+        sys.exit()
 
 def on_close(ws, code, reason):
     nowDatetime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') 
-    logging.info(nowDatetime+" closed: "+str(code)+' '+str(reason))
+    logging.info(nowDatetime+"fstream closed: "+str(code)+' '+str(reason))
     
 # userstream ws2
 def on_open2(ws2):
@@ -275,6 +274,9 @@ def on_message2(ws2, msg):
                 
     except Exception as e:
         logger.exception(e)
+    if count > 10:
+        ws2.close()
+        sys.exit()
         
 def on_close2(ws2, code, reason):
     nowDatetime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') 
@@ -516,13 +518,4 @@ if __name__ == '__main__':
     thread2.start()
 
     app.run_server(host='127.0.0.1', port='8050', debug=False)
-
-
-# # 느낀점:
-# ### 거래 모니터링에는 에러알림 텔레그램봇 개발과 pyqt 윈도우 폼만 사용해보고 Dash를 사용해보진 않았었는데 Dash는 전략별로 시각화하기 쉽다는 장점이 있다.
-
-# In[ ]:
-
-
-
-
+    sys.exit() 
