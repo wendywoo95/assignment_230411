@@ -5,7 +5,7 @@ binance-futures-connector==3.3.1
 websocket-client==1.1.0
 websockets==9.1
 pandas==1.3.5
-numpy==1.19.5
+numpy==1.20.0
 dash-bootstrap-components==1.4.1
 dash-core-components==2.0.0
 dash-extendable-graph==1.3.0
