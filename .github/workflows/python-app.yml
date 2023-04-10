@@ -31,7 +31,8 @@ jobs:
         cd ta-lib
         ./configure
         make
-        sudo make install      
+        sudo make install     
+        pip install TA-Lib
     - name: Run Python
       run: |
         python3 assignment_230411.py
