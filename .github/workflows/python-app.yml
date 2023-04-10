@@ -27,12 +27,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        tar -xzf ta-lib-0.4.0-src.tar.gz
-        cd ta-lib/./configure --prefix=/usr
+        tar xvfz ta-lib-0.4.0-src.tar.gz
+        cd ta-lib
+        ./configure
         make
-        sudo make install
-        pip install TA-Lib
-        
+        sudo make install      
     - name: Run Python
       run: |
         python3 assignment_230411.py
