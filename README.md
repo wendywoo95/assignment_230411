@@ -41,11 +41,19 @@
   
 ```
   
-환경: Python 3.7
-  
 # 과제 설명
-  assignment_230411.py 실행 후 http://127.0.0.1:8050/ 접속시 보이는 Dash visualization 화면
+  python 버전: 3.7
+  
+  docker 실행방법: 
+  ```
+  docker run -p 8050:8050 -p 8080:8080 -e "API_KEY=<YOUR_API_KEY>" -e "API_SECRET=<YOUR_API_SECRET>" wendywoo95/assignment_230411
+  ```
+  
+  
+  assignment_230411.py 실행 후 http://localhost:8080/ 접속시 보이는 Dash visualization 화면:
+  
   ![image](https://user-images.githubusercontent.com/60970842/231112402-5e37bcad-4f17-4d1d-8568-5b33c2505e3d.png)
+  
   
   1. Portfolio Value(USDT): position value, unrealized pnl까지 합하여 총 자산을 USDT로 나타낸 숫자
   2. Current Position PnL: 현재 position의 총 pnl
