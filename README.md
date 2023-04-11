@@ -59,7 +59,8 @@
   2. Current Position PnL: 현재 position의 총 pnl
   3. Current Position Amount: 현재 position의 갯수
   4. Strategy Cumulative PnL: 각 전략별 수익률. 전략 start -> end -> filled 되면 PnL에 반영
-  5. Portfolio Value History: 1초마다 그래프에 <1. Portfolio Value(USDT)> 의 값을 기록하여 나타낸 차트
+  5. Strategy Current unrealized PnL: 각 전략별 미실현 수익률
+  6. Portfolio Value History: 1초마다 그래프에 <1. Portfolio Value(USDT)> 의 값을 기록하여 나타낸 차트
 
 
 전략 Start
@@ -72,21 +73,3 @@
   자동으로 dash의 <4. Strategy Cumulative PnL>에 업데이트되도록 함
   
   
-send_order 때마다 count += 1 을 적용하여 10번 주문시 전략이 자동으로 꺼지도록 해놓았음
-- 꺼지지 않게 하려면 각 웹소켓의 on_message 부분의 코드 3줄을 지움
-```python
-def on_message(ws, msg):
-...
-    if count > 10:
-        ws.close()
-        sys.exit()
-```
-
-```python
-def on_message2(ws2, msg):
-...
-    if count > 10:
-        ws2.close()
-        sys.exit()
-```
-
