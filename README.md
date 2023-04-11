@@ -41,6 +41,8 @@
   
 ```
   
+환경: Python 3.7
+  
 # 과제 설명
   assignment_230411.py 실행 후 http://127.0.0.1:8050/ 접속시 보이는 Dash visualization 화면
   ![image](https://user-images.githubusercontent.com/60970842/231112402-5e37bcad-4f17-4d1d-8568-5b33c2505e3d.png)
