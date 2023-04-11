@@ -64,6 +64,7 @@ send_order 때마다 count += 1 을 적용하여 10번 주문시 전략이 자�
 - 꺼지지 않게 하려면 각 웹소켓의 on_message 부분의 코드 3줄을 지움
 ```python
 def on_message(ws, msg):
+...
     if count > 10:
         ws.close()
         sys.exit()
@@ -71,6 +72,7 @@ def on_message(ws, msg):
 
 ```python
 def on_message2(ws2, msg):
+...
     if count > 10:
         ws2.close()
         sys.exit()
