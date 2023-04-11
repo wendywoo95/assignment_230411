@@ -1,4 +1,4 @@
-FROM 3.7-slim
+FROM python:3.7-slim
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY ta-lib-0.4.0-src.tar.gz .
