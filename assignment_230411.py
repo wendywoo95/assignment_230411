@@ -333,6 +333,7 @@ for i in range(10,111):
     strategy_d[i]['unpnl'] = 0
 #-------------------------------------------------------------------------------------------------------#
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
+app.scripts.config.serve_locally=True
 server = app.server
 app.layout = html.Div([
     html.Div([
