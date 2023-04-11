@@ -52,7 +52,7 @@
   
   assignment_230411.py 실행 후 http://localhost:8080/ 접속시 보이는 Dash visualization 화면:
   
-  ![image](https://user-images.githubusercontent.com/60970842/231112402-5e37bcad-4f17-4d1d-8568-5b33c2505e3d.png)
+![image](https://user-images.githubusercontent.com/60970842/231207985-6c3a18b1-77e0-456f-91c0-d023ecc6c435.png)
   
   
   1. Portfolio Value(USDT): position value, unrealized pnl까지 합하여 총 자산을 USDT로 나타낸 숫자
