@@ -46,7 +46,7 @@
   1. Portfolio Value(USDT): position value, unrealized pnl까지 합하여 총 자산을 USDT로 나타낸 숫자
   2. Current Position PnL: 현재 position의 총 pnl
   3. Current Position Amount: 현재 position의 갯수
-  4. Stratrgy Cumulative PnL: 각 전략별 수익률. 전략 start -> end -> filled 되면 PnL에 반영
+  4. Strategy Cumulative PnL: 각 전략별 수익률. 전략 start -> end -> filled 되면 PnL에 반영
   5. Portfolio Value History: 1초마다 그래프에 <1. Portfolio Value(USDT)> 의 값을 기록하여 나타낸 차트
 
 
@@ -57,7 +57,7 @@
 전략 End
 - 위 예시에서 dead cross로 해당 포지션에 대한 청산 주문(SELL 주문)이 나간 상태
 - 주문이 체결(filled)되면 전략의 status는 0이 되고 websocket으로 받은 realized pnl을 strategy_d[전락번호][pnl]에 저장 후 
-  자동으로 dash의 <4. Stratrgy Cumulative PnL>에 업데이트되도록 함
+  자동으로 dash의 <4. Strategy Cumulative PnL>에 업데이트되도록 함
   
   
 send_order 때마다 count += 1 을 적용하여 10번 주문시 전략이 자동으로 꺼지도록 해놓았음
