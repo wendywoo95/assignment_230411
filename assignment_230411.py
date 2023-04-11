@@ -269,7 +269,7 @@ def on_message2(ws2, msg):
                     strategy_d[i]['status']= 0
                     
                     strategy_d[i]['pnl'] += strategy_d[i]['unpnl']
-                strategy_d[i]['entry_price'] = float(data['o']['ap'])
+#                 strategy_d[i]['entry_price'] = float(data['o']['ap'])
                 
                 logging.info('FILLED '+str(i)+' '+data['o']['S'])
                 
