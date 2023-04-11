@@ -21,6 +21,7 @@ import sys
 import talib
 from talib import stream
 import numpy as np
+import os
 
 import logging
 # create logger
@@ -40,8 +41,8 @@ dashlog.setLevel(logging.ERROR)
 isFutures = True
 isTest = True
 my_symbol = 'BTCUSDT'
-api_key = 'e66daf8db0ffa187e96430c4f1af35abb111c6679a6e869887168d93c9ca8644'#config.get('BINANCE', 'TEST_API_KEY')
-api_secret = 'd979a16822f586075d78bf8c23e86f836ffb24c61343b578e5e95ffccfbe0f5a' #config.get('BINANCE', 'TEST_SECRET_KEY')
+api_key = os.getenv("API_KEY")#config.get('BINANCE', 'TEST_API_KEY')
+api_secret = os.getenv("API_SECRET") #config.get('BINANCE', 'TEST_SECRET_KEY')
 hashedsig = hashlib.sha256(api_secret.encode('utf-8'))
 client = Client(api_key, api_secret, testnet = isTest)
 if isFutures:
