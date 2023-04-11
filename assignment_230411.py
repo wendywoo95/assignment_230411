@@ -406,7 +406,24 @@ app.layout = html.Div([
                             title="Strategy Cumulative PnL"
                         )
                 }
-            )], style={'width': '50%', 'display': 'inline-block'}),
+            )], style={'width': '30%', 'display': 'inline-block'}),
+        html.Div([
+            dcc.Graph(
+                id='figure-5',
+                figure={
+                    'data': [
+                        go.Bar(
+                            x=list(strategy_d.keys()),
+                            y=[strategy_d[i]['unpnl']  for i in strategy_d],
+                        )
+                    ],
+                    'layout':
+                        go.Layout(
+                            showlegend=False,
+                            title="Strategy Current unrealized PnL"
+                        )
+                }
+            )], style={'width': '30%', 'display': 'inline-block'}),
         
         html.Div([
             dcc.Graph(
@@ -418,7 +435,7 @@ app.layout = html.Div([
                            'mode': 'lines',
                            'type': 'scatter'}],
                 layout={'title':"Portfolio Value history"})
-            )], style={'width': '50%', 'display': 'inline-block'}),
+            )], style={'width': '30%', 'display': 'inline-block'}),
         
         dcc.Interval(
             id='1-second-interval',
@@ -445,7 +462,7 @@ def update_graph_live(n, existing):
               Output('figure-2', 'figure'),
               Output('figure-3', 'figure'),
               Output('figure-4', 'figure'),
-#               Output('figure-5', 'extendData'),
+              Output('figure-5', 'figure'),
               Input('1-second-interval', 'n_intervals'))
 def update_layout(n):
     figure1 = {
@@ -497,8 +514,21 @@ def update_layout(n):
                 title="Strategy Cumulative PnL"
             )
     }
+    figure5 = {
+        'data': [
+            go.Bar(
+                    x=list(strategy_d.keys()),
+                    y=[strategy_d[i]['unpnl']  for i in strategy_d]
+            )
+        ],
+        'layout':
+            go.Layout(
+                showlegend=False,
+                title="Strategy Current unrealized PnL"
+            )
+    }
 
-    return figure1, figure2, figure3, figure4
+    return figure1, figure2, figure3, figure4, figure5 
 
 
 if __name__ == '__main__':
