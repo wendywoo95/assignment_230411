@@ -517,5 +517,5 @@ if __name__ == '__main__':
     thread2 = threading.Thread(target=ws2.run_forever, daemon=True)
     thread2.start()
 
-    app.run_server(host='0.0.0.0', port='8050', debug=False)
+    app.run_server(host='0.0.0.0', port=8080, debug=False)
     sys.exit() 
