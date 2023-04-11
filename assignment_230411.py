@@ -259,7 +259,8 @@ def on_message2(ws2, msg):
                     
                     if data['o']['S'] == 'SELL': plus = -1
                     else: plus = 1
-                    strategy_d[i]['pos'] = float(data['o']['q']) * plus # +- 곱해줘서 부호붙여줌        
+                    strategy_d[i]['pos'] = float(data['o']['q']) * plus # +- 곱해줘서 부호붙여줌   
+                    strategy_d[i]['entry_price'] = float(data['o']['ap'])
                 
                 elif strategy_d[i]['status'] == 'end': # 해당전략 포지션 클리어로 end라면
                     strategy_d[i]['side'] = 'BOTH'
@@ -267,8 +268,7 @@ def on_message2(ws2, msg):
                     strategy_d[i]['order_id'] = 0
                     strategy_d[i]['status']= 0
                     
-                    strategy_d[i]['pnl'] += float(data['o']['rp'])
-                    strategy_d[i]['total'] = strategy_d[i]['unpnl'] + strategy_d[i]['pnl']
+                    strategy_d[i]['pnl'] += strategy_d[i]['unpnl']
                 strategy_d[i]['entry_price'] = float(data['o']['ap'])
                 
                 logging.info('FILLED '+str(i)+' '+data['o']['S'])
