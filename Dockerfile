@@ -13,4 +13,5 @@ RUN tar -xvzf ta-lib-0.4.0-src.tar.gz && \
 RUN pip install TA-Lib
 COPY . .
 EXPOSE 8050
-ENTRYPOINT ["python", "assignment_230411.py"]
+# ENTRYPOINT ["python", "assignment_230411.py"]
+CMD gunicorn -b 0.0.0.0:80 assignment_230411:server
