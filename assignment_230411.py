@@ -213,9 +213,9 @@ def on_message(ws, msg):
                                  
     except Exception as e:
         logger.exception(e)
-    if count > 10:
-        ws.close()
-        sys.exit()
+#     if count > 10:
+#         ws.close()
+#         sys.exit()
 
 def on_close(ws, code, reason):
     nowDatetime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') 
@@ -275,9 +275,9 @@ def on_message2(ws2, msg):
                 
     except Exception as e:
         logger.exception(e)
-    if count > 10:
-        ws2.close()
-        sys.exit()
+#     if count > 10:
+#         ws2.close()
+#         sys.exit()
         
 def on_close2(ws2, code, reason):
     nowDatetime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') 
